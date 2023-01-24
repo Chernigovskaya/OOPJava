@@ -1,29 +1,40 @@
 package hw2;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 public final class ImutClass {
+    private final int number;
+    private final Map<String, Integer> product;
 
-    private final String name;
-    private final int price;
-
-    public ImutClass(final String name, final int price) {
-        this.name = name;
-        this.price = price;
+    public ImutClass(final int number,final Map<String, Integer> product) {
+        this.number = number;
+        Map<String, Integer> copy = new HashMap<>();
+        for(String key : product.keySet()) {
+            copy.put(key, product.get(key));
         }
-
-    public String getName() {
-        return name;
+        this.product = copy;
     }
 
-    public int getPrice() {
-        return price;
+    public int getNumber() {
+        return number;
+    }
+
+    public Map<String, Integer> getProduct() {
+        Map<String, Integer> copy = new HashMap<>();
+        for(String key : product.keySet()) {
+           copy.put(key, product.get(key));
+        }
+        return copy;
+
     }
 
     @Override
     public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
+        return "Product {" +
+                "number = " + number +
+                ", product = " + product +
                 '}';
     }
 }
